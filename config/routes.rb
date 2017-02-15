@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-	root 
+	resources :games
+	resources :categories
+	
 end

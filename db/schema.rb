@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170215200935) do
     t.integer  "max_players"
     t.integer  "playing_time"
     t.integer  "year_published"
-    t.integer  "bgg_rating"
+    t.decimal  "bgg_rating"
     t.string   "image"
     t.string   "thumbnail"
     t.datetime "created_at",     null: false
