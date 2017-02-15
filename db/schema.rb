@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20170215200935) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "friend_id",  null: false
-    t.boolean  "pending?",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "adder_id",     null: false
+    t.integer  "confirmer_id", null: false
+    t.boolean  "pending?",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "games", force: :cascade do |t|
