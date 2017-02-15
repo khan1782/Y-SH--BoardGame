@@ -21,3 +21,46 @@ Friendship.create([
 	{adder_id:4, confirmer_id:1, confirmed?:true}
 ])
 
+
+KEVIN WHAT UPPPPPPPPPPP
+require 'net/http'
+require 'json'
+
+URI('http://bgg-json.azurewebsites.net/collection/edwalter?grouped=true')
+uri = URI('http://bgg-json.azurewebsites.net/collection/edwalter?grouped=true')
+
+Net::HTTP.get(uri)
+games = JSON.parse(Net::HTTP.get(uri))
+
+
+
+games.each do |game|
+  print "Game Name: "
+  puts game["name"]
+
+  print "Min Players: "
+  puts game["minPlayers"]
+
+  print "Max Players: "
+  puts game["maxPlayers"]
+
+  print "Playing Time: "
+  puts game["playingTime"]
+
+  print "Year Published: "
+  puts game["yearPublished"]
+
+  print "Average Rating: "
+  puts game["averageRating"]
+
+  print "Image Link: "
+  puts "http:"+game["image"]
+
+  print "Thumbnail Link: "
+  puts "http:"+game["thumbnail"]
+
+  puts "*"*80
+  puts " "*80
+  puts " "*80
+end
+
