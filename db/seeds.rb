@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create([
+	{name:"Kevin", email:"kevin@gmail.com", password_digest:"password"},
+	{name:"Yibin", email:"yibin@gmail.com", password_digest:"password"},
+	{name:"Savance", email:"savance@gmail.com", password_digest:"password"},
+	{name:"nick", email:"nick@gmail.com", password_digest:"password"}
+])
+
+Game.create([
+	{title:"Naked Twister",description:"",time:"",players:"",image:"",publisher:""},
+	{title:"Non-naked Twister",description:"",time:"",players:"",image:"",publisher:""},
+	{title:"Connect 4",description:"",time:"",players:"",image:"",publisher:""},
+	{title:"Tic-Tac-Toe",description:"",time:"",players:"",image:"",publisher:""},
+	{title:"Rock paper scissors",description:"",time:"",players:"",image:"",publisher:""},
+	{title:"Monopoly",description:"",time:"",players:"",image:"",publisher:""}
+])
+
+Friendship.create([
+	{adder_id:1, confirmer_id:2},
+	{adder_id:1, confirmer_id:3},
+	{adder_id:2, confirmer_id:4},
+	{adder_id:4, confirmer_id:1}
+])
+
