@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170215200935) do
   create_table "friendships", force: :cascade do |t|
     t.integer  "adder_id",     null: false
     t.integer  "confirmer_id", null: false
-    t.boolean  "pending?",     null: false
+    t.boolean  "confirmed?",   null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

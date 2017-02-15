@@ -15,9 +15,9 @@ Game.create([
 ])
 
 Friendship.create([
-	{adder_id:1, confirmer_id:2},
-	{adder_id:1, confirmer_id:3},
-	{adder_id:2, confirmer_id:4},
-	{adder_id:4, confirmer_id:1}
+	{adder_id:1, confirmer_id:2, confirmed?:false},
+	{adder_id:1, confirmer_id:3, confirmed?:true},
+	{adder_id:2, confirmer_id:4, confirmed?:false},
+	{adder_id:4, confirmer_id:1, confirmed?:true}
 ])
 
