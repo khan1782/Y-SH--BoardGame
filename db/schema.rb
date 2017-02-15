@@ -38,14 +38,16 @@ ActiveRecord::Schema.define(version: 20170215200935) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.string   "description", null: false
-    t.string   "players"
+    t.string   "title",          null: false
+    t.integer  "min_players"
+    t.integer  "max_players"
+    t.integer  "playing_time"
+    t.integer  "year_published"
+    t.decimal  "bgg_rating"
     t.string   "image"
-    t.string   "time"
-    t.string   "publisher"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "thumbnail"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "tags", force: :cascade do |t|
