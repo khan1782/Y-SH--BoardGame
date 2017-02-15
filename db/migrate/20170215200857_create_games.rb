@@ -8,6 +8,7 @@ class CreateGames < ActiveRecord::Migration[5.0]
       t.integer :year_published
       t.integer :bgg_rating
       t.string :image
+      t.string :thumbnail
       t.timestamps
     end
   end

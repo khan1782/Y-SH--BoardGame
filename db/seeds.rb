@@ -4,16 +4,6 @@ User.create([
 	{name:"Savance", email:"savance@gmail.com", password_digest:"password"},
 	{name:"nick", email:"nick@gmail.com", password_digest:"password"}
 ])
-
-Game.create([
-	{title:"Naked Twister",description:"",time:"",players:"",image:"",publisher:""},
-	{title:"Non-naked Twister",description:"",time:"",players:"",image:"",publisher:""},
-	{title:"Connect 4",description:"",time:"",players:"",image:"",publisher:""},
-	{title:"Tic-Tac-Toe",description:"",time:"",players:"",image:"",publisher:""},
-	{title:"Rock paper scissors",description:"",time:"",players:"",image:"",publisher:""},
-	{title:"Monopoly",description:"",time:"",players:"",image:"",publisher:""}
-])
-
 Friendship.create([
 	{adder_id:1, confirmer_id:2, confirmed?:false},
 	{adder_id:1, confirmer_id:3, confirmed?:true},
@@ -22,7 +12,6 @@ Friendship.create([
 ])
 
 
-KEVIN WHAT UPPPPPPPPPPP
 require 'net/http'
 require 'json'
 
@@ -35,32 +24,17 @@ games = JSON.parse(Net::HTTP.get(uri))
 
 
 games.each do |game|
-  print "Game Name: "
-  puts game["name"]
 
-  print "Min Players: "
-  puts game["minPlayers"]
-
-  print "Max Players: "
-  puts game["maxPlayers"]
-
-  print "Playing Time: "
-  puts game["playingTime"]
-
-  print "Year Published: "
-  puts game["yearPublished"]
-
-  print "Average Rating: "
-  puts game["averageRating"]
-
-  print "Image Link: "
-  puts "http:"+game["image"]
-
-  print "Thumbnail Link: "
-  puts "http:"+game["thumbnail"]
-
-  puts "*"*80
-  puts " "*80
-  puts " "*80
+  new_game = Game.new
+  
+  new_game.title = game["name"]
+  new_game.min_players = game["minPlayers"]
+  new_game.max_players = game["maxPlayers"]
+  new_game.playing_time = game["playingTime"]
+  new_game.year_published = game["yearPublished"]
+  new_game.bgg_rating = game["averageRating"]
+  new_game.image = "http:"+game["image"]
+  new_game.thumbnail = "http:"+game["thumbnail"]
+  new_game.save
 end
 
