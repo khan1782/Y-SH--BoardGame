@@ -24,6 +24,6 @@ class GamesController < ApplicationController
 
 	def show
 		@game = Game.find_by_id(params[:id])
-		@new_comment = @game.comments.new
+		@current_user = User.find_by_id(session[:user_id])
 	end
 end
