@@ -1,10 +1,10 @@
 <nav>
-	<%= link_to 'home' ,root_path %>
+	<%= link_to 'Home' ,root_path %>
   <% if session[:user_id] %>
-    <%= link_to 'logout', '/logout' %>
-    <%= link_to 'profile' ,user_path(session[:user_id]) %>
+    <%= link_to 'Log Out', '/logout' %>
+    <%= link_to 'Profile' ,user_path(session[:user_id]) %>
   <% else %>
-    <%= link_to 'register' ,new_user_path %>
-    <%= link_to 'login' ,'/login' %>
+    <%= link_to 'Register' ,new_user_path %>
+    <%= link_to 'Login' ,'/login' %>
   <% end  %>
 </nav>

@@ -16,6 +16,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
+    puts "did you get here?"
     self.received_friendships.reject{|friendship| friendship.confirmed?}.map{ |friendship| friendship.adder }
   end
 
@@ -28,5 +29,8 @@ class User < ApplicationRecord
     requester_ids = self.received_friendships.map {|friendship| friendship.adder_id}
     requester_ids.include?(user_id)
   end
-end
 
+  def our_friendship(user_id)
+    self.received_friendships.where(adder_id: user_id).where(confirmer_id: self.id).first
+  end
+end
