@@ -17,21 +17,20 @@
 
 
 
-    <h2>Comments</h2>
-    <% @game.comments.each do |comment| %>
-      <p><%= comment.body %></p>
-    <% end %>
+<h2>Comments</h2>
+	<% @game.comments.each do |comment| %>
+		<p><%= comment.body %> - <%= link_to comment.author_name, comment.user %></p>
+	<% end %>
 
 
     <br>
 
-    <%= form_for [@game, @new_comment]  do |f| %>
-      <%= f.label "Write Your Comment Here" %><br>
-      <%= f.text_area :body %><br>
-      <%= f.submit "Submit Comment" %>
-    <% end %>
+
+<%= form_for [@game, @game.comments.new]  do |f| %>
+<%= f.hidden_field :game_id %>
+	<%= f.label "Write Your Comment Here" %><br>
+	<%= f.text_area :body %><br>
+	<%= f.submit "Submit Comment" %>
+<% end %>
 
 
-   <!-- , game_user_game_index_path(@game) -->
-  </div>
-</div>

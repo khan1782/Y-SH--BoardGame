@@ -16,12 +16,17 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-      self.received_friendships.reject{|friendship| friendship.confirmed?}.map{ |friendship| friendship.adder }
+    self.received_friendships.reject{|friendship| friendship.confirmed?}.map{ |friendship| friendship.adder }
   end
 
-   def friend_with_current_user?(user_id)
- +    possible_friend = User.find_by(id: user_id)
- +    self.friends.include?(possible_friend)
-    end
+  def friend_with_current_user?(user_id)
+    possible_friend = User.find_by(id: user_id)
+    self.friends.include?(possible_friend)
+  end
+
+  def got_friend_request_from_current_user?(user_id)
+    requester_ids = self.received_friendships.map {|friendship| friendship.adder_id}
+    requester_ids.include?(user_id)
+  end
 end
 
