@@ -1,3 +1,5 @@
+Comment.create(game_id:126, user_id: 1, body:"A feast??? for ODINNN???????")
+
 array_of_games = [
 {
 gameId: 7865,
