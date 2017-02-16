@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 	def create
 		new_comment = Comment.new(comment_params)
-		new_comment.game_id = params[:game_id]
 		new_comment.user_id = 1
 		new_comment.save
 		game = Game.find_by_id(new_comment.game_id)
@@ -9,6 +8,6 @@ class CommentsController < ApplicationController
 	end
 	private
 	def comment_params
-		params.require(:comment).permit(:body)
+		params.require(:comment).permit(:body, :game_id)
 	end
 end
