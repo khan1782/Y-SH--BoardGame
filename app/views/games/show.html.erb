@@ -1,16 +1,20 @@
-<h2><%= @game.title %></h2>
-<img src="<%= @game.image %>" height="420px">
-<p>Year Published: <%= @game.year_published %></p>
-<p>BGG Rating: <%= @game.bgg_rating.round(2) %></p>
-<p>Min Players: <%= @game.min_players %></p>
-<p>Max Players: <%= @game.max_players %></p>
-<p>Play Time: <%= @game.playing_time %> min</p>
+<div class="row">
+  <div class="large-12 columns">
+    <h2><%= @game.title %></h2>
+    <img src="<%= @game.image %>" height="420px">
+    <p>Year Published: <%= @game.year_published %></p>
+    <p>BGG Rating: <%= @game.bgg_rating.round(2) %></p>
+    <p>Min Players: <%= @game.min_players %></p>
+    <p>Max Players: <%= @game.max_players %></p>
+    <p>Play Time: <%= @game.playing_time %> min</p>
 
- <%  if session[:user_id]%>
-   <%= button_to [@game, :user_games] do %>
-     Favorite this game!
-   <% end %>
- <% end %>
+     <%  if session[:user_id]%>
+       <%= button_to [@game, :user_games] do %>
+         Favorite this game!
+       <% end %>
+     <% end %>
+
+
 
 
 <h2>Comments</h2>
@@ -18,7 +22,9 @@
 		<p><%= comment.body %> - <%= link_to comment.author_name, comment.user %></p>
 	<% end %>
 
-<br>
+
+    <br>
+
 
 <%= form_for [@game, @game.comments.new]  do |f| %>
 <%= f.hidden_field :game_id %>
