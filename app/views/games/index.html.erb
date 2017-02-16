@@ -1,9 +1,17 @@
 <div>
 
-
-<%= link_to "Random Ten", {:controller => "games", :action => "index", :list_of_games => "random" }%>
-<%= link_to "User Top Ten", {controller: "games", action:"index", list_of_games: "user" } %>
-<%= link_to "BGG Top Ten", {controller: "games", action:"index", list_of_games: "bgg"} %>
+<nav>
+<%= link_to "Random Ten", {:controller => "games", :action => "index", :list => "random" }%>
+<%= link_to "User Top Ten", {controller: "games", action:"index", list: "user" } %>
+<%= link_to "BGG Top Ten", {controller: "games", action:"index", list: "bgg"} %>
+</nav>
+<nav>
+<p>Want to find a new game?</p>
+<% 7.times do |i| %>
+<%= link_to "#{i+1} Player Games", {controller: "games", action:"index", list: "by_num", num:"#{i+1}" } %>
+<% end %>
+<%= link_to "8+ Player Games", {controller: "games", action:"index", list: "by_num", num:"8"} %>
+</nav>
 
 
 
