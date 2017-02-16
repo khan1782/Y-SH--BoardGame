@@ -6,10 +6,20 @@
 <p>Max Players: <%= @game.max_players %></p>
 <p>Play Time: <%= @game.playing_time %> min</p>
 
+ <%  if session[:user_id]%>
+   <%= button_to [@game, :user_games] do %>
+     Favorite this game!
+   <% end %>
+ <% end %>
+
+
+
+
 <h2>Comments</h2>
 <% @game.comments.each do |comment| %>
 	<p><%= comment.body %></p>
 <% end %>
+
 
 <br>
 
@@ -18,3 +28,6 @@
 	<%= f.text_area :body %><br>
 	<%= f.submit "Submit Comment" %>
 <% end %>
+
+
+ <!-- , game_user_game_index_path(@game) -->

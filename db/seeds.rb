@@ -21,12 +21,10 @@ uri = URI('http://bgg-json.azurewebsites.net/collection/edwalter?grouped=true')
 Net::HTTP.get(uri)
 games = JSON.parse(Net::HTTP.get(uri))
 
-
-
 games.each do |game|
 
   new_game = Game.new
-  
+
   new_game.title = game["name"]
   new_game.min_players = game["minPlayers"]
   new_game.max_players = game["maxPlayers"]
