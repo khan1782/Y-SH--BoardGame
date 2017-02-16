@@ -1,11 +1,16 @@
 <div>
-	<center><table>
+
+
+<%= link_to "Random Ten", {:controller => "games", :action => "index", :list_of_games => "random" }%>
+<%= link_to "User Top Ten", {controller: "games", action:"index", list_of_games: "user" } %>
+<%= link_to "BGG Top Ten", {controller: "games", action:"index", list_of_games: "bgg"} %>
+
+
+
+
 	<h2><%= @list_title %></h2>
 	<% @list_of_games.each_with_index do |game, i|%>
-		<tr>
-			<td><center><img src="<%= game.thumbnail %> " height="50px"></center></td>
-			<td><%= i+1 %>. <%= link_to game.title, game %></td>
-		</tr>
+			<p><img src="<%= game.thumbnail %> " height="50px">
+			<% if @list_action == "user" || @list_action == "bgg" %><%= i+1 %>.<% end %> <%= link_to game.title, game %></p>
 	<% end %>
-	</table></center>
 </div>

@@ -3,11 +3,15 @@ class Game < ApplicationRecord
   has_many :users, through: :user_games
   has_many :comments
 
+  def self.popular
+  	(Game.bgg_top_ten + Game.user_top_ten).sample(10)
+  end
+
   def self.bgg_top_ten
   	Game.all.sort_by {|game| game.bgg_rating.to_f}.reverse[0..9]
   end
 
-  def self.random_top_ten
+  def self.random_ten
   	Game.all.sample(10)
   end
 
