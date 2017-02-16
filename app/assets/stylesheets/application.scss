@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+// require foundation
+// require foundation
+
+
+.main_container {
+
+  h2 {
+    font-size: 2.875rem;
+    font-weight: 200;
+    text-align: center;
+    margin: 0;
+    padding: 60px;
+  }
+  background:	#00FDDC;
+
+  .game-row {
+    font-family: "Proxima Nova","proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    // background: #F8F8FF;
+    }
+    .image_style{
+      background: #5F9EA0;
+    }
+    h3 {
+      font-size: 1.875rem;
+      font-weight: 120;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+//======================================= side bar
+
+    .left-off-canvas-menu {
+      // // display: none;
+
+      margin-top: 5rem;
+      .item {
+        text-decoration: none;
+
+      }
+      // margin-left: 1rem;
+      font-size: 1.5rem;
+      // color: green;
+      // transition: all .25s ease-in-out;
+
+      &:focus {
+        color: green;
+      }
+
+      &:hover {
+        // color: lighten(green, 35%);
+        transition: all .25s ease-in-out;
+      }
+    }
+
+  }
+
+.main_nav {
+  background: #495867;
+  text-align: center;
+  padding: 30px;
+  a {
+    padding-right: 10px;
+    color: white;
+    font-size: 1.2em;
+  }
+}

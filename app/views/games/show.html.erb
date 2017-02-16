@@ -1,33 +1,37 @@
-<h2><%= @game.title %></h2>
-<img src="<%= @game.image %>" height="420px">
-<p>Year Published: <%= @game.year_published %></p>
-<p>BGG Rating: <%= @game.bgg_rating.round(2) %></p>
-<p>Min Players: <%= @game.min_players %></p>
-<p>Max Players: <%= @game.max_players %></p>
-<p>Play Time: <%= @game.playing_time %> min</p>
+<div class="row">
+  <div class="large-12 columns">
+    <h2><%= @game.title %></h2>
+    <img src="<%= @game.image %>" height="420px">
+    <p>Year Published: <%= @game.year_published %></p>
+    <p>BGG Rating: <%= @game.bgg_rating.round(2) %></p>
+    <p>Min Players: <%= @game.min_players %></p>
+    <p>Max Players: <%= @game.max_players %></p>
+    <p>Play Time: <%= @game.playing_time %> min</p>
 
- <%  if session[:user_id]%>
-   <%= button_to [@game, :user_games] do %>
-     Favorite this game!
-   <% end %>
- <% end %>
-
-
-
-
-<h2>Comments</h2>
-<% @game.comments.each do |comment| %>
-	<p><%= comment.body %></p>
-<% end %>
+     <%  if session[:user_id]%>
+       <%= button_to [@game, :user_games] do %>
+         Favorite this game!
+       <% end %>
+     <% end %>
 
 
-<br>
-
-<%= form_for [@game, @new_comment]  do |f| %>
-	<%= f.label "Write Your Comment Here" %><br>
-	<%= f.text_area :body %><br>
-	<%= f.submit "Submit Comment" %>
-<% end %>
 
 
- <!-- , game_user_game_index_path(@game) -->
+    <h2>Comments</h2>
+    <% @game.comments.each do |comment| %>
+      <p><%= comment.body %></p>
+    <% end %>
+
+
+    <br>
+
+    <%= form_for [@game, @new_comment]  do |f| %>
+      <%= f.label "Write Your Comment Here" %><br>
+      <%= f.text_area :body %><br>
+      <%= f.submit "Submit Comment" %>
+    <% end %>
+
+
+   <!-- , game_user_game_index_path(@game) -->
+  </div>
+</div>
