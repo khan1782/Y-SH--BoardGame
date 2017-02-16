@@ -1,16 +1,6 @@
 <div class="row main_container">
 	<div class="large-12 columns">
 
-		<div class="row main_nav">
-			<div class="large-12 columns">
-			<nav>
-				<%= link_to "Random Ten", {:controller => "games", :action => "index", :list => "random" }%> |
-				<%= link_to "User Top Ten", {controller: "games", action:"index", list: "user" } %> |
-				<%= link_to "BGG Top Ten", {controller: "games", action:"index", list: "bgg"} %>
-				</nav>
-			</div>
-		</div>
-
 		<div class="row">
 			<div class="large-3 columns">
 				<nav class="left-off-canvas-menu">
@@ -21,7 +11,6 @@
 					<li class="item"><%= link_to "8+ Player Games", {controller: "games", action:"index", list: "by_num", num:"8"} %></li>
 				</nav>
 			</div>
-
 
 		<div class="large-8 columns">
 			<h2><%= @list_title %></h2>
