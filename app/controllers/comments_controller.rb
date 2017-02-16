@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 	def create
 		new_comment = Comment.new(comment_params)
 		new_comment.user_id = session[:user_id]
-		new_comment.game_id = params[:session_id] if new_comment.game_id == nil
+		new_comment.game_id = params[:game_id] if new_comment.game_id == nil
 		new_comment.save
 		game = Game.find_by_id(new_comment.game_id)
 		redirect_to game_path(game)
