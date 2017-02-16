@@ -1,10 +1,19 @@
-<nav>
-	<%= link_to 'Home' ,root_path %>
-  <% if session[:user_id] %>
-    <%= link_to 'Log Out', '/logout' %>
-    <%= link_to 'Profile' ,user_path(session[:user_id]) %>
-  <% else %>
-    <%= link_to 'Register' ,new_user_path %>
-    <%= link_to 'Login' ,'/login' %>
-  <% end  %>
-</nav>
+<div class="row main_nav">
+  <div class="large-12 columns">
+    <nav>
+      <%= link_to "Random Ten", {:controller => "games", :action => "index", :list => "random" }%> |
+      <%= link_to "User Top Ten", {controller: "games", action:"index", list: "user" } %> |
+      <%= link_to "BGG Top Ten", {controller: "games", action:"index", list: "bgg"} %> |
+      <%= link_to 'Home' ,root_path %> |
+
+      <% if session[:user_id] %>
+        <%= link_to 'Log Out', '/logout' %> |
+        <%= link_to 'Profile' ,user_path(session[:user_id]) %>
+      <% else %>
+        <%= link_to 'Register' ,new_user_path %> |
+        <%= link_to 'Login' ,'/login' %>
+      <% end  %>
+
+    </nav>
+  </div>
+</div>
