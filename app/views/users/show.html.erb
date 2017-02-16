@@ -1,2 +1,26 @@
-<%= @user.name %>
-this is the user profile :)
+<% if @user.id == session[:user_id] %>
+   <h2>Welcome, <%= @user.name %>!</h2>
+
+
+ <% else %>
+   <h2><%= @user.name %>'s Profile</h2>
+ <% end %>
+
+  <h2>friends:</h2>
+   <% @user.friends.each do |friend| %>
+     <%= link_to friend.name, user_path(friend) %><p>
+   <% end %>
+
+ <% if @user.friend_with_current_user?(session[:user_id]) || @user.id == session[:user_id] %>
+   <h2>favorited games:</h2>
+     <% @user.games.each do |game| %>
+       <%= link_to game.title, game_path(game) %><p>
+     <% end %>
+ <% else %>
+
+    <%= button_to friendships_path(user_id: @user.id) do %>
+      Send a friend request to this person! :)
+    <% end %>
+
+
+ <% end %>
