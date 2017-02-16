@@ -1,6 +1,11 @@
 <div>
+	<center><table>
 	<h2><%= @list_title %></h2>
 	<% @list_of_games.each_with_index do |game, i|%>
-		<p><%= i+1 %>. <%= game.title %></p>
+		<tr>
+			<td><center><img src="<%= game.thumbnail %> " height="50px"></center></td>
+			<td><%= i+1 %>. <%= link_to game.title, game %></td>
+		</tr>
 	<% end %>
+	</table></center>
 </div>

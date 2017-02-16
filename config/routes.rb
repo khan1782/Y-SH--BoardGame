@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-	resources :games
+	resources :games do
+		resources :comments, only: [:create]
+	end
 	resources :users
 	resources :categories
 	resources :sessions
