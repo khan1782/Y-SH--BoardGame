@@ -1,0 +1,6 @@
+<div>
+	<h2><%= @list_title %></h2>
+	<% @list_of_games.each_with_index do |game, i|%>
+		<p><%= i+1 %>. <%= game.title %></p>
+	<% end %>
+</div>
