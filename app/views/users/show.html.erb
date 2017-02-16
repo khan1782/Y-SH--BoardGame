@@ -1,28 +1,47 @@
+<!-- If you are logged in and this is your profile page... -->
 <% if @user.id == session[:user_id] %>
-  <h2>Welcome, <%= @user.name %>!</h2>
-<% else %>
-  <h2><%= @user.name %>'s Profile</h2>
+  <h2>Welcome, <%= @user.name %>! :)</h2>
+
+  <!-- Here are your friend requests -->
+  <%if @user.friend_requests.count > 0 %>
+      Here are your friend requests!
+      <ul><% @user.friend_requests.each do |request| %>
+        <li><%= link_to request.name, user_path(request) %>
+            | <%= link_to "Accept Request", friendship_path(friendship_id: @user.our_friendship(request.id).id), method: :put %>
+            | <%= link_to "Reject Request", friendship_path(friendship_id: @user.our_friendship(request.id).id), method: :delete %></li>
+      <% end %></ul>
+  <% end %>
+
+  <!-- If you are logged in and this is not your profile page... -->
+  <% else %>
+    <h2><%= @user.name %>'s Profile</h2>
 <% end %>
 
-<h2>friends:</h2>
+
+<!-- Here are a list of friends pertaining to this profile page... -->
+<h2>Friends:</h2>
 <% @user.friends.each do |friend| %>
   <%= link_to friend.name, user_path(friend) %><p>
 <% end %>
 
+
+<!-- If you are on your own profile page or you are friends with this profile page's owner... -->
 <% if @user.id == session[:user_id] || @user.friend_with_current_user?(session[:user_id]) %>
 
-  <h2>favorited games:</h2>
+  <h2>Favorited games:</h2>
   <% @user.games.each do |game| %>
-    <%= link_to game.title, game_path(game) %><p>
+      <%= link_to game.title, game_path(game) %><p>
   <% end %>
 
 <% else %>
-
+  <!-- if you sent a friend request already, it will tell you so... -->
   <% if @user.got_friend_request_from_current_user?(session[:user_id]) %>
     You sent a friend request to this person.
   <% else %>
+  <!-- you may send a friend request to this profile page's owner... -->
     <%= button_to friendships_path(user_id: @user.id) do %>
       Send a friend request to this person! :)
     <% end %>
   <% end %>
 <% end %>
+
