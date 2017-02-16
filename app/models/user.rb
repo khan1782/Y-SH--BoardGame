@@ -7,12 +7,16 @@ class User < ApplicationRecord
   has_many :received_friendships, class_name: "Friendship", foreign_key: :confirmer_id
 
 
-  # has_secure_password
+  has_secure_password
 
-  def friends	
+  def friends
   	initiated_friends = self.initiated_friendships.select{|friendship| friendship.confirmed?}.map{ |friendship| friendship.confirmer }
   	received_friends = self.received_friendships.select{|friendship| friendship.confirmed?}.map{ |friendship| friendship.adder }
   	initiated_friends + received_friends
   end
 
+  def friend_requests
+      friend_requests = self.received_friendships.reject{|friendship| friendship.confirmed?}.map{ |friendship| friendship.adder }
+  end
 end
+
